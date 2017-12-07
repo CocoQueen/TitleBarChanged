@@ -62,14 +62,17 @@ public class MainActivity extends AppCompatActivity implements HaveScrollListVie
     }
 
     @Override
+
     public void onScrollerChanged(HaveScrollListView mSc, int x, int y, int oldx, int oldy) {
         if (y <= 0) {   //设置标题的背景颜色
             mTv.setBackgroundColor(Color.argb((int) 0, 144, 151, 166));
+            mTv.setText("");
         } else if (y > 0 && y <= height) { //滑动距离小于banner图的高度时，设置背景和字体颜色颜色透明度渐变
             float scale = (float) y / height;
             float alpha = (255 * scale);
             mTv.setTextColor(Color.argb((int) alpha, 255, 255, 255));
             mTv.setBackgroundColor(Color.argb((int) alpha, 144, 151, 166));
+            mTv.setText("标题栏");
         } else {    //滑动到banner下面设置普通颜色
             mTv.setBackgroundColor(Color.argb((int) 255, 144, 151, 166));
         }
